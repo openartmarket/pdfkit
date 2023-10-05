@@ -73,6 +73,16 @@ const doc = new PDFDocument();
 // See below for browser usage
 doc.pipe(fs.createWriteStream('output.pdf'));
 
+// Add a spot color
+const GOLD = "PANTONE_16_0836";
+doc.addSpotColor(GOLD, 25, 25, 25, 25);
+// Use said spot color
+doc
+.roundedRect(0, 0, 100, 100, 0.8)
+.lineWidth(2)
+.stroke(GOLD);
+
+
 // Embed a font, set the font size, and render some text
 doc
   .font('fonts/PalatinoBold.ttf')
